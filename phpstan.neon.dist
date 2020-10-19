@@ -1,0 +1,19 @@
+includes:
+	- vendor/phpstan/phpstan-phpunit/extension.neon
+	- vendor/phpstan/phpstan-phpunit/rules.neon
+
+parameters:
+    level: 8
+    paths:
+        -  %currentWorkingDirectory%/src
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    inferPrivatePropertyTypeFromConstructor: true
+
+services:
+    - class: PHPStan\Rules\Methods\MissingMethodReturnTypehintRule
+      tags:
+          - phpstan.rules.rule
+    - class: PHPStan\Rules\Methods\MissingMethodParameterTypehintRule
+      tags:
+          - phpstan.rules.rule
